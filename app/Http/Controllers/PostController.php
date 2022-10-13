@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Models\Post;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -24,7 +25,7 @@ class PostController extends Controller
 
     public function getPost()
     {
-        $posts = Post::orderBy('id', 'DESC')->get();
+        $posts = Post::orderBy('id', 'ASC')->get();
         return view('posts', compact('posts'));
     }
     public function getPostById($id)
@@ -50,5 +51,12 @@ class PostController extends Controller
         $post->save();
 
         return back()->with('post_updated', 'Post has benn updated successfully!');
+    }
+
+    public function getPostQuery()
+    {
+        $posts = DB::select('SELECT * from posts');
+        //dd($posts);
+        return view('postsquery', compact('posts'));
     }
 }

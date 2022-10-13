@@ -23,6 +23,7 @@ Route::get('/', function () {
 Route::get('/add-post', [PostController::class, 'addpost']);
 Route::post('/create-post', [PostController::class, 'createPost'])->name('post.create');
 Route::get('/posts', [PostController::class, 'getPost'])->name('post.getPost');
+Route::get('/getPostQuery', [PostController::class, 'getPostQuery'])->name('post.getPostQuery');
 Route::get('/posts/{id}', [PostController::class, 'getPostById'])->name('post.getPostById');
 Route::get('/delete-post/{id}', [PostController::class, 'deletePost'])->name('post.deletePost');
 Route::get('/edit-post/{id}', [PostController::class, 'editPost'])->name('post.editpost');
